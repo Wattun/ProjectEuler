@@ -71,16 +71,6 @@ def judge_circulatory_num(num):
 
     return flag
 
-
-print(judge_three_digit_product_true(146376))
-print(judge_circulatory_num(906609))
-
-
-
-
-if judge_circulatory_num(906609) == True and judge_three_digit_product_true(906609) == True:
-    print("成功")
-
 first_num = 1000 * 1000
 
 for first_num in reversed(range(0, first_num)):
@@ -88,13 +78,3 @@ for first_num in reversed(range(0, first_num)):
     if judge_circulatory_num(first_num) == True and judge_three_digit_product_true(first_num) == True:
         print(first_num)
         break
-
-'''
-test = 10
-
-for test in reversed(range(0, 10)):
-    print(test)
-    if test == 4:
-        print(test)
-        break
-'''
