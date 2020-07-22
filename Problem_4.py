@@ -1,3 +1,11 @@
+# Problem 4 : Largest palindrome product
+# A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+# Find the largest palindrome made from the product of two 3-digit numbers.
+
+# 問題 4 : 最大回文積
+# 回文数とは逆から読んでも同じ値になる数のことである．2桁の数字の積からなる最大の回文数は9009 = 91 × 99である．
+# 2つの3桁の数の積からなる最大の回文数を求めよ．
+
 import math 
 
 
