@@ -1,6 +1,8 @@
-# 関数 1： 回文数を判定する
-# 関数 2： 三桁の積か判定する
+import math 
 
+
+# 与えられた整数が三桁の数の積か判定したかった
+# 素因数分解をしてしまった
 def judge_three_digit_product(num):
     prime_factor = []
     temp = num
@@ -26,25 +28,73 @@ def judge_three_digit_product(num):
 
     return flag
 
+def judge_three_digit_product_true(num):
+
+    devided_num = 0
+    flag = False
+
+    for i in reversed(range(100, 1000)):
+
+        # print(num % i)
+        if num % i == 0:
+            devided_num = num / i
+
+            devided_num = int(devided_num)
+            #print(len(str(devided_num)))
+
+            if len(str(devided_num)) == 3:
+                flag = True
+                break
+
+    return flag
+            
+
+# 与えられた数が回文数かを判定する
 def judge_circulatory_num(num):
     digit = 0
     conversed_num = 0
     temp_num = 0
+    original_num = num
     flag = False
 
     digit = len(str(num))
 
     for i in range(digit):
         temp_num = num % 10
-        conversed_num += temp_num * pow(10, digit - 1)
+        temp_num = math.floor(temp_num)
+        conversed_num += temp_num * pow(10, digit - 1 - i)
+        num = num / 10
         
-    if conversed_num == num:
+    if conversed_num == original_num:
         flag = True
     
-    print(digit)
-    print(conversed_num)
+
     return flag
 
 
-print(judge_three_digit_product(34189))
-print(judge_circulatory_num(1001))
+print(judge_three_digit_product_true(146376))
+print(judge_circulatory_num(906609))
+
+
+
+
+if judge_circulatory_num(906609) == True and judge_three_digit_product_true(906609) == True:
+    print("成功")
+
+first_num = 1000 * 1000
+
+for first_num in reversed(range(0, first_num)):
+
+    if judge_circulatory_num(first_num) == True and judge_three_digit_product_true(first_num) == True:
+        print(first_num)
+        break
+
+'''
+test = 10
+
+for test in reversed(range(0, 10)):
+    print(test)
+    if test == 4:
+        print(test)
+        break
+'''
