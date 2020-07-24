@@ -18,11 +18,14 @@
 
 import numpy as np
 
-
+# 1から100までのNumpy配列を用意
 sequence = np.arange(1, 101)
+# 平方の和
 sum_of_suquare = np.sum(sequence ** 2)
+# 和の平方
 square_of_sum = np.sum(sequence) ** 2
 
+# 和の平方から平方の和を引いた数
 sum_square_difference = square_of_sum - sum_of_suquare
 
 print(sum_square_difference)
