@@ -32,9 +32,20 @@ def judge_prime_number(num):
     if len(prime_factor) == 1 and total_cnt == 1:
         flag = True
     
-    print(prime_factor)
-    print(len(prime_factor))
-    print(total_cnt)
+
     return flag
 
-print(judge_prime_number(27))
+flag = False
+i = 2
+count = 0
+
+while flag != True:
+    
+    if judge_prime_number(i) == True:
+        count += 1
+    
+    if count == 10001:
+        print(i)
+        flag = True
+
+    i += 1
