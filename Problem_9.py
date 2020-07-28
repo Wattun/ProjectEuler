@@ -12,3 +12,22 @@
 # a + b + c = 1000となるピタゴラス数が一組だけ存在する．
 # ピタゴラス数a, b, cの積abcを求めよ．
 
+# TODO: ピタゴラス数を判定する関数
+# TODO: 3つの数の和が1000であるかどうかの判定
+
+import math
+
+# 2つの数がピタゴラスの式を満たすか判定する
+def pythagorean_num(a, b):
+    c_dash = a ^ 2 + b ^ 2
+    c = 0
+
+    if math.sqrt(c_dash).is_integer() == True:
+        c = math.sqrt(c_dash)
+
+    
+
+
+# ある数の平方根が整数かどうかの判定
+aru_kazu = 81
+print(math.sqrt(aru_kazu).is_integer())
