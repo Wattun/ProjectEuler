@@ -25,7 +25,7 @@ def pythagorean_num(a, b):
     if math.sqrt(c_dash).is_integer() == True:
         c = math.sqrt(c_dash)
 
-    
+# テスト
 
 
 # ある数の平方根が整数かどうかの判定
