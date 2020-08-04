@@ -19,15 +19,17 @@ import math
 
 # 2つの数がピタゴラスの式を満たすか判定する
 def pythagorean_num(a, b):
-    c_dash = a ^ 2 + b ^ 2
+    c_dash = a ** 2 + b ** 2
     c = 0
 
     if math.sqrt(c_dash).is_integer() == True:
-        c = math.sqrt(c_dash)
+        c = int(math.sqrt(c_dash))
+
+    return c
 
 # テスト
-
+print(pythagorean_num(2, 4))
 
 # ある数の平方根が整数かどうかの判定
-aru_kazu = 81
+aru_kazu = 25
 print(math.sqrt(aru_kazu).is_integer())
