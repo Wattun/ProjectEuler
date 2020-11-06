@@ -18,6 +18,7 @@
 import math
 
 # 2つの数がピタゴラスの式を満たすか判定する
+# 入力(a, b)がピタゴラス数になりうる場合は残りの数字cを返す．
 def pythagorean_num(a, b):
     c_dash = a ** 2 + b ** 2
     c = 0
@@ -27,9 +28,24 @@ def pythagorean_num(a, b):
 
     return c
 
-# テスト
-print(pythagorean_num(2, 4))
+# ピタゴラス数の判定が出た際に合計が1000になるかどうかの判定
+def judge_total_thousand(a, b, c):
 
-# ある数の平方根が整数かどうかの判定
-aru_kazu = 25
-print(math.sqrt(aru_kazu).is_integer())
+    if a + b + c == 1000:
+        return True
+    else:
+        return False
+
+
+for a_index in range(1, 500):
+    for b_index in range(1, 500):
+        c_index = pythagorean_num(a_index, b_index)
+        if (c_index != 0) and judge_total_thousand(a_index, b_index, c_index):
+            print("Special Pythagorean triplet is \n")
+            print("a =",a_index, "b =",b_index, "c =", c_index)
+            print("a*b*c=", a_index * b_index * c_index)
+            break
+    
+    else:
+        continue
+    break
