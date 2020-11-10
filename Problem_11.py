@@ -34,5 +34,135 @@
 # 20×20の格子の中で，上下左右斜めいずれかの方向で並んでいる4つの数字の積のうち，最大のものは何か．
 
 from tqdm import tqdm
+import numpy as np
 
 
+# 4つの数字を選んで掛ける関数(縦)
+def pick_numbers_vertical(grid, num_of_elements):
+
+    row_len = len(grid)
+    column_len = len(grid[0])
+    max_num = 0
+    direction = "vertical"
+    position = []
+
+    #4つの数字を選んで積を計算する
+    for column_index in range(0, column_len):
+        
+        for row_index in range(0, (row_len - num_of_elements) + 1):
+            
+            temp_product = grid[row_index][column_index] * grid[row_index + 1][column_index] * grid[row_index + 2][column_index] * grid[row_index + 3][column_index]
+
+            if temp_product > max_num:
+                max_num = temp_product
+                position = [[row_index, column_index]]
+
+                position.append([row_index + 1, column_index])
+                position.append([row_index + 2, column_index])
+                position.append([row_index + 3, column_index])
+
+    return max_num, direction, position
+
+def pick_numbers_sideway(grid, num_of_elements):
+
+    row_len = len(grid)
+    column_len = len(grid[0])
+    max_num = 0
+    direction = "sideway"
+    position = []
+
+    #4つの数字を選んで積を計算する
+    for row_index in range(0, row_len):
+        
+        for column_index in range(0, (column_len - num_of_elements) + 1):
+            
+            temp_product = grid[row_index][column_index] * grid[row_index][column_index + 1] * grid[row_index][column_index + 2] * grid[row_index][column_index + 3]
+
+            if temp_product > max_num:
+                max_num = temp_product
+                position = [[row_index, column_index]]
+
+                position.append([row_index, column_index + 1])
+                position.append([row_index, column_index + 2])
+                position.append([row_index, column_index + 3])
+    
+    return max_num, direction, position
+
+def pick_numbers_declining(grid, num_of_elements):
+
+    row_len = len(grid)
+    column_len = len(grid[0])
+    max_num = 0
+    direction = "declining"
+    position = []
+
+    #4つの数字を選んで積を計算する
+    for row_index in range(0, (row_len - num_of_elements) + 1):
+        
+        for column_index in range(0, (column_len - num_of_elements) + 1):
+            
+            temp_product = grid[row_index][column_index] * grid[row_index + 1][column_index + 1] * grid[row_index + 2][column_index + 2] * grid[row_index + 3][column_index + 3]
+
+            if temp_product > max_num:
+                max_num = temp_product
+                position = [[row_index, column_index]]
+
+                position.append([row_index + 1, column_index + 1])
+                position.append([row_index + 2, column_index + 2])
+                position.append([row_index + 3, column_index + 3])
+    
+    return max_num, direction, position
+
+def pick_numbers_growing(grid, num_of_elements):
+
+    row_len = len(grid)
+    column_len = len(grid[0])
+    max_num = 0
+    direction = "growing"
+    position = []
+
+    #4つの数字を選んで積を計算する
+    for row_index in range(num_of_elements - 1, row_len):
+        
+        for column_index in range(0, (column_len - num_of_elements) + 1):
+            
+            temp_product = grid[row_index][column_index] * grid[row_index - 1][column_index + 1] * grid[row_index - 2][column_index + 2] * grid[row_index - 3][column_index + 3]
+
+            if temp_product > max_num:
+                max_num = temp_product
+                position = [[row_index, column_index]]
+
+                position.append([row_index - 1, column_index + 1])
+                position.append([row_index - 2, column_index + 2])
+                position.append([row_index - 3, column_index + 3])
+    
+    return max_num, direction, position
+
+# 格子ファイルをndarrayで読み込み
+grid_of_numbers = np.loadtxt("read_file/problem_11.txt")
+
+# 結果
+result_vertical = pick_numbers_vertical(grid_of_numbers, 4)
+result_sideway = pick_numbers_sideway(grid_of_numbers, 4)
+result_decline = pick_numbers_declining(grid_of_numbers, 4)
+result_growing = pick_numbers_growing(grid_of_numbers, 4)
+
+max_temp = 0
+result = []
+
+if max_temp < result_vertical[0]:
+    max_temp = result_vertical[0]
+    result = result_vertical
+if max_temp < result_sideway[0]:
+    max_temp = result_sideway[0]
+    result = result_sideway
+if max_temp < result_decline[0]:
+    max_temp = result_decline[0]
+    result = result_decline
+if max_temp < result_growing[0]:
+    max_temp = result_growing[0]
+    result = result_growing
+
+print("product : ", result[0])
+print("direction : ", result[1])
+print("position : ", result[2])
