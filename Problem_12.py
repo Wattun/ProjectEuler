@@ -15,7 +15,6 @@
 # 28: 1,2,4,7,14,28
 
 # We can see that 28 is the first triangle number to have over five divisors.
-
 # What is the value of the first triangle number to have over five hundred divisors?
 
 # 問題 12 : 高度整除三角数
@@ -25,6 +24,12 @@
 # 三角数略
 
 # 28が5個より多い約数を持つ最初の三角数であることがわかる。
-
 # 100個より多い約数を持つ最初の三角数は何か？
 
+# 対象の数の約数の数を返す関数
+# 入力 : 調べたい数(int)
+# 出力 : 調べたい数の約数の数(int)
+
+def count_divisors(target_num : int):
+
+    
