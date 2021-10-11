@@ -32,4 +32,18 @@
 
 def count_divisors(target_num : int):
 
+    quantity_divisors = 0
+
+    for index in range(1, target_num + 1):
+
+        if target_num % index == 0:
+
+            quantity_divisors += 1
+        
+        else:
+
+            pass
     
+    return quantity_divisors
+
+print(count_divisors(28))
